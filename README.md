@@ -1,19 +1,19 @@
-# Parcoursup Stats exporter
+# Parcoursup Stats Exporter
 
 La carte des formations sur Parcoursup est bien, mais dès qu'on veut avoir une vue d'ensemble rapide de toutes les formations pour un type d'étude donné (par ex. un BUT Informatique) ou si on veut rapidement visualiser et comparer des stats (comme nb de places, pourcentage d'admissions en fonction de son niveau, etc), ça devient limité, à moins d'ouvrir plusieurs onglets et de s'y perdre.
-Il existe l'outil [SupTracker](https://beta.suptracker.org/) qui est plutôt pas mal, mais au moment où je l'ai utilisé, les données étaient celles de l'année précédente. Dommage qu'il ne soit pas mis plus en avant...
+Il existe l'outil [SupTracker](https://beta.suptracker.org/) qui est plutôt pas mal, mais lorsque je l'ai utilisé, les données étaient celles de l'année précédente. Dommage qu'il ne soit pas mis plus en avant...
 
 Heureusement, toutes les données des formations sur Parcoursup sont en accès libre sur Data.gouv !
 Sur Data.gouv, on a accès à un autre outil intéressant : [l'Explorateur des données](https://explore.data.gouv.fr/fr/datasets/5f90f5c978b32276bad5f959/?Session__exact=2025#/resources/19e77c6b-9e90-4673-aaed-276b77ac9c69). C'est comme un spreadsheet, on peut filtrer sur toutes les colonnes. Il y a la liste de toutes les formations mais il manque les stats.
 
 Encore heureusement, on peut les télécharger toutes les données des 14 000 formations avec les stats. Ce qui va nous permettre de filtrer sur les formations qui nous intéressent, puis les charger dans un spreadsheet. Ainsi, la comparaison des établissements de formation est beaucoup plus facile.
-On pourra aussi visualiser rapidement les stats d'une formation spécifique sans avoir beoin d'ouvir la page web parcoursup de celle-ci.
+On pourra aussi visualiser rapidement les stats d'une formation spécifique sans avoir besoin d'ouvir la page web parcoursup de celle-ci.
 
-Pour faire ceci, j'utilise l'outil [`miller`](https://github.com/johnkerl/miller). Ca fait quelques temps que je l'ai dans ma besace sans avoir eu un cas d'usage pour l'utiliser, là c'est l'occasion ! Il permet de manipuler aisément des fichier CSV, de faire des requêtes dedans comme on porrait le faire avec `jq` ou `yq` par exemple.
+Pour faire ceci, j'utilise l'outil [`miller`](https://github.com/johnkerl/miller). Ca fait quelques temps que je l'ai dans ma besace sans avoir eu un cas d'usage pour l'utiliser, là c'est l'occasion ! Il permet de manipuler aisément des fichier CSV, de faire des requêtes dedans comme on pourrait le faire avec `jq` ou `yq` par exemple.
 
 ## Récupération des données
 
-Tout se trouve ici [**Parcoursup 2024 - vœux de poursuite d'études et de réorientation dans l'enseignement supérieur et réponses des établissements**](https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-parcoursup/information/) dans l'ongler "Export".
+Tout se trouve ici [**Parcoursup 2024 - vœux de poursuite d'études et de réorientation dans l'enseignement supérieur et réponses des établissements**](https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-parcoursup/information/) dans l'onglet "Export".
 
 On peut les télécharger sous différents formats, c'est le `csv` qui m'intéresse :
 
@@ -69,4 +69,4 @@ Part des terminales générales qui étaient en position de recevoir une proposi
 Lien de la formation sur la plateforme Parcoursup                                                                 https://dossier.parcoursup.fr/Candidats/public/fiches/afficherFicheFormation?g_ta_cod=9993
 ```
 
-Les intitulés sont ceux du csv `reponses-etablissements.csv`. Si vous voulez d'autres stats que celles affichées, ill suffit d'ajouter l'intitulé dans le tableau `fields_list` du script.
+Les intitulés sont ceux du csv `reponses-etablissements.csv`. Si vous voulez d'autres stats que celles affichées, il suffit d'ajouter l'intitulé dans le tableau `fields_list` du script.
