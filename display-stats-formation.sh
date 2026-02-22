@@ -41,6 +41,10 @@ fields=$(IFS=, ; echo "${fields_list[*]}")
 color="--no-color"
 color="--key-color white-bold"
 #cmd="mlr --ifs ';' --icsv --ojson cut -o -f ${fields} ${input} | jq '.[] | select(.cod_aff_form == ${code})'"
-cmd="mlr ${color} --ifs ';' --icsv --oxtab filter '\${cod_aff_form} == \"${code}\"' then cut -o -f ${fields} ${input}"
+if [[ ${2:-} == "--all" ]]; then
+  cmd="mlr ${color} --ifs ';' --icsv --oxtab filter '\${cod_aff_form} == \"${code}\"' ${input}"
+else
+  cmd="mlr ${color} --ifs ';' --icsv --oxtab filter '\${cod_aff_form} == \"${code}\"' then cut -o -f ${fields} ${input}"
+fi
 
 eval $(echo ${cmd})
